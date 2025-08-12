@@ -1,4 +1,4 @@
-# Improved config.py - Better system prompts
+# Enhanced config.py with new parameters for improved RAG
 
 import os
 from dotenv import load_dotenv
@@ -21,6 +21,11 @@ class Config:
     CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", 200))
 
     # Chatbot settings
-    TEMPERATURE = 0.3
-    MAX_TOKENS = 300
-    TOP_K_RESULTS = 5
+    TEMPERATURE = float(os.getenv("TEMPERATURE", 0.3))
+    MAX_TOKENS = int(os.getenv("MAX_TOKENS", 300))
+    TOP_K_RESULTS = int(os.getenv("TOP_K_RESULTS", 5))
+
+    # New settings for enhanced features
+    RELEVANCE_THRESHOLD = float(os.getenv("RELEVANCE_THRESHOLD", 0.5))  # Minimum similarity score
+    MULTI_QUERY_COUNT = int(os.getenv("MULTI_QUERY_COUNT", 3))  # Number of query variations
+    K_PER_QUERY = int(os.getenv("K_PER_QUERY", 3))  # Documents per query variation
